@@ -7,9 +7,19 @@
   <link rel="manifest" href="manifest.json">
   <meta name="msapplication-config" content="browserconfig.xml">
   <meta name="msapplication-TileColor" content="#da532c">
+  <script type="javascript" src="https://testprofy.ru/scripts/shared-w.js"></script>
 </head>
 <body>
 
 asdfaf
+  <script>
+    const worker = new SharedWorker('https://testprofy.ru/scripts/shared-w.js');
+
+    worker.port.onmessage = function(event) {
+        console.log("Received message from Shared Worker:", event.data);
+    };
+
+    worker.port.postMessage("Hello from Domain B");
+  </script>
 </body>
 </html>
