@@ -26,6 +26,7 @@ asdfaf
     function getWorkerURL( url ) {
       const content = `importScripts( "${ url }" );`;
       return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
+    }
       
     /*const cross_origin_script_url = "https://testprofy.ru/scripts/shared-w.js";
 
