@@ -11,10 +11,15 @@
 <body>
 
 asdfaf
+
+  <button onclick="click()">Send from FavTest</button>
   <script>
   
     const channel = new BroadcastChannel('MyChannel');
-    channel.postMessage('Send from IFrame')
+
+    click() {
+    channel.postMessage('Send from IFrame');
+    }
   </script>
 </body>
 </html>
