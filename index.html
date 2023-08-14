@@ -7,23 +7,12 @@
   <link rel="manifest" href="manifest.json">
   <meta name="msapplication-config" content="browserconfig.xml">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" />
 </head>
 <body>
 
 asdfaf
   <script>
-    const workerJs = `importScripts( "https://testprofy.ru/scripts/shared-w.js" );`;
-    const worker = new SharedWorker(`data:text/javascript;base64,${btoa(workerJs)}`);
-    worker.port.onmessage = (event) => {
-      console.log('Message from SharedWorker:', event.data);
-    };
-
-    // URL.revokeObjectURL( worker_url );
-
-    worker.port.start();
-
-    worker.port.postMessage('Hello from GitHub!');
+  
     /*const cross_origin_script_url = "https://greggman.github.io/doodles/test/ping-worker.js";
 
     const worker_url = getWorkerURL( cross_origin_script_url );
