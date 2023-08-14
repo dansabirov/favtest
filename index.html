@@ -12,7 +12,18 @@
 
 asdfaf
   <script>
-    const cross_origin_script_url = "https://greggman.github.io/doodles/test/ping-worker.js";
+    const workerJs = `importScripts( "https://testprofy.ru/scripts/shared-w.js" );`;
+    const worker = new SharedWorker(`data:text/javascript;base64,${btoa(workerJs)}`);
+    worker.port.onmessage = (event) => {
+      console.log('Message from SharedWorker:', event.data);
+    };
+
+    URL.revokeObjectURL( worker_url );
+
+    worker.port.start();
+
+    worker.port.postMessage('Hello from GitHub!');
+    /*const cross_origin_script_url = "https://greggman.github.io/doodles/test/ping-worker.js";
 
     const worker_url = getWorkerURL( cross_origin_script_url );
     const worker = new Worker( worker_url );
@@ -26,7 +37,7 @@ asdfaf
     function getWorkerURL( url ) {
       const content = `importScripts( "${ url }" );`;
       return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
-    }
+    }*/
       
     /*const cross_origin_script_url = "https://testprofy.ru/scripts/shared-w.js";
 
