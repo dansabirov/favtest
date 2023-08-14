@@ -15,6 +15,21 @@ asdfaf
     const cross_origin_script_url = "https://testprofy.ru/scripts/shared-w.js";
 
     const worker_url = getWorkerURL( cross_origin_script_url );
+    const worker = new Worker( worker_url );
+    worker.onmessage = (evt) => console.log( evt.data );
+    worker.postMessage('Hello from GitHub');
+    URL.revokeObjectURL( worker_url );
+
+    // Returns a blob:// URL which points
+    // to a javascript file which will call
+    // importScripts with the given URL
+    function getWorkerURL( url ) {
+      const content = `importScripts( "${ url }" );`;
+      return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
+      
+    /*const cross_origin_script_url = "https://testprofy.ru/scripts/shared-w.js";
+
+    const worker_url = getWorkerURL( cross_origin_script_url );
     const worker = new SharedWorker( worker_url );
     worker.port.onmessage = (event) => {
       console.log('Message from SharedWorker:', event.data);
@@ -30,7 +45,7 @@ asdfaf
     function getWorkerURL( url ) {
       const content = `importScripts( "${ url }" );`;
       return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
-    }
+    }*/
   </script>
 </body>
 </html>
