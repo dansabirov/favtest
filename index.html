@@ -12,14 +12,14 @@
 
 asdfaf
 
-  <button onclick="click()">Send from FavTest</button>
-  <script>
-  
-    function click() {
-      debugger
-      alert('click');
-       window.parent.postMessage('From IFram React', 'http://localhost:4200/');
-    }
-  </script>
+  <button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
 </body>
 </html>
