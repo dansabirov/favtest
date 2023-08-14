@@ -18,7 +18,9 @@ asdfaf
 
 <script>
 function myFunction() {
-  window.parent.postMessage('From IFram Github', 'http://localhost:4200/');
+  // window.parent.postMessage('From IFram Github', 'http://localhost:4200/');
+
+  window.parent.globalEventBus.emit('updateData', 'Github globalEventBus');
 }
 </script>
 </body>
