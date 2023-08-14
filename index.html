@@ -15,10 +15,8 @@ asdfaf
   <button onclick="click()">Send from FavTest</button>
   <script>
   
-    const channel = new BroadcastChannel('MyChannel');
-
     function click() {
-    channel.postMessage('Send from IFrame');
+       window.parent.postMessage('From IFram React', 'http://localhost:4200/');
     }
   </script>
 </body>
